@@ -26,21 +26,34 @@
 % 5. Merge OpenFont and MacFonts as a single sty with options.
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
 % CHANGELOG:
+%
+% v.1.3 (DFoo):
+% 0. Forked from original Deedy CV
+% 1. Fixed overflow issue from previous version by using paracol package (idea from   % CVs made by LianTze Lim)
+% 2. Adjusted column widths to suit my preference
+% 3. Used tabularx package which makes it easier to set relative widths for tables
+% 4. Copied formatting .cls file from "Deedy Resume Reversed" by Zachary Taylor
+%
+%
+% v1.2:
+% 1. Added publications in place of societies.
+% 2. Collapsed a portion of education.
+% 3. Fixed a bug with alignment of overflowing long last updated dates on the top 
+% right. 
+%
+%
 % v1.1:
 % 1. Fixed several compilation bugs with \renewcommand
 % 2. Got Open-source fonts (Windows/Linux support)
 % 3. Added Last Updated
 % 4. Move Title styling into .sty
 % 5. Commented .sty file.
-%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Known Issues:
-% 1. Overflows onto second page if any column's contents are more than the
-% vertical limit
-% 2. Hacky space on the first bullet point on the second column.
+% 1. Hacky space on the first bullet point on the second column.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -50,7 +63,15 @@
  
 \pagestyle{fancy}
 \fancyhf{}
- 
+
+% Change the page layout if you need to
+\geometry{columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% The tabularx package lets you easily specify relative table widths
+\usepackage{tabularx} 
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,92 +86,176 @@
 %     TITLE NAME
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\namesection{Debarghya}{Das}{ \urlstyle{same}\href{http://debarghyadas.com}{debarghyadas.com}| \href{http://fb.co/dd}{fb.co/dd}\\
-\href{mailto:deedy@fb.com}{deedy@fb.com} | 607.379.5733 | \href{mailto:dd367@cornell.edu}{dd367@cornell.edu}
-}
+\namesection{Dahlia Foo}{ \urlstyle{same}\href{http://dahliafoo.com}{dahliafoo.com }|
+\href{mailto:xxx@gmail.com}{xxx@gmail.com} | +61 49xxxxx09 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %     COLUMN ONE
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Set the left/right column width ratio to 7:3.
+\columnratio{0.58}
 
-\begin{minipage}[t]{0.33\textwidth} 
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+\begin{paracol}{2}
+
+
+%\begin{minipage}[t]{0.33\textwidth} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     EDUCATION
+%     RESEARCH
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hfill
+\section{Research}
 
-\section{Education} 
-
-\subsection{Cornell University}
-\descript{MEng in Computer Science}
-\location{Dec 2014 | Ithaca, NY}
+\runsubsection{IMAS Marine Predator Lab}
+\descript{|\hspace{.25cm}Ph.D Candidate}
+\location{Jun 2015 – Aug 2020 | TAS, Australia}
+Supervisors: \textbf{\href{https://www.utas.edu.au/profiles/staff/imas-qms-utas/mark-hindell}{Mark Hindell}},  \textbf{\href{https://www.utas.edu.au/profiles/staff/imas/clive-mcmahon}{Clive McMahon}}, \textbf{\href{https://pir.sa.gov.au/__data/assets/pdf_file/0004/46372/Goldsworthy_Simon_2016.pdf}{Simon Goldsworthy}}, \textbf{\href{https://www.researchgate.net/profile/Frederic_Bailleul}{Fred Bailleul}} \\
+Funding: Sea World Research and Rescue Foundation,  Holsworth Wildlife and Research Endowment, Lirabenda Endowment Fund\\ 
+%\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item Studied the seasonal variability in foraging behaviour of lactating Long-nosed fur seals from South Australia
+\item Field site was a remote coastal area at Cape Gantheaume, Kangaroo Island. Duration: summer and winter for 6-8 week stints in 2016 and 2017 via camping in a team of 2-3 people
+\item Captured (via dart gun or net), anaesthetised, and tagged a total of 45 adult female fur seals with a variety of archival loggers (geolocation light loggers, GLS; time-depth recorders, TDR) and satellite-linked GPS/Argos tags. GLS and TDR loggers remained on females for 6-7 months (summer to winter). Recaptured 18 females.
+\item Collected adult female and their pup's whiskers for stable isotope analyses.
+\item Published 3 (4th in review) journal articles - see Publications \#1-3.
+\end{tightemize}
 \sectionsep
 
-\subsection{Cornell University}
-\descript{BS in Computer Science}
-\location{May 2014 | Ithaca, NY}
-College of Engineering \\
-Magna Cum Laude\\
-\location{ Cum. GPA: 3.83 / 4.0 \\
-Major GPA: 3.9 / 4.0}
+\runsubsection{Department of Conservation NZ}
+\descript{|\hspace{.25cm}Field Technician}
+\location{Dec – Feb 2018, 2019, 2020 | Campbell Island, New Zealand}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item Field team member for annual NZ sea lion survey on sub-Antarctic Campbell Island
+\item Living conditions: Cold, wet, windy, and muddy. Remote camping for 6-7 weeks in a team of 3-4 people. Hiking 7-8h 1-way to hut occasionally for rest and showers
+\item Assist with pre-trip logistics (e.g. food ordering, procurement of equipment, packing) and quarantine
+\item In the field tasks: daily counts of sea lion colony (adults and pups), double flipper tag all pups, mark-recapture pup count, microchipping pups, measuring and weighing pups, data entry. 
+\item Led work for GPS tracking of pups in 2017 season and camera trapping work in all 3 seasons.
+\end{tightemize}
 \sectionsep
 
-\subsection{La Martiniere for Boys}
-\location{Grad. May 2011|  Kolkata, India}
+\runsubsection{Department of Conservation NZ}
+\descript{|\hspace{.25cm}Research Consultant}
+\location{May – June 2019 | TAS, Australia}
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item Wrap up of the 2019 Campbell Island sea lion field season 
+\item Finalised the 2019 Campbell Island field trip report 
+\item Updated the Campbell Island documentation for the following field season:
+    \begin{tightemize}
+    \item Wrote an indicative work programme for the following field season (timeline/work plan for future teams to follow with key dates for tasks, including checklists)
+    \item Created a guide on how to set up camp at field sites
+    \item Updated the Campbell Island team tasks and protocols
+    \item Developed checklists for Campbell Island gear lists
+    \item Created a spreadsheet for inventory of food/consumables and ordering for future teams for easier ordering, packing and reducing excess purchasing
+    \item Updated Campbell Island field team manual
+    \end{tightemize}
+\item Wrote the Campbell Island workshop report based on post-trip discussion. 
+\end{tightemize}
 \sectionsep
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     LINKS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Links} 
-Facebook:// \href{https://facebook/dd}{\bf dd} \\
-Github:// \href{https://github.com/deedydas}{\bf deedydas} \\
-LinkedIn://  \href{https://www.linkedin.com/in/debarghyadas}{\bf debarghyadas} \\
-YouTube://  \href{https://www.youtube.com/user/DeedyDash007}{\bf DeedyDash007} \\
-Twitter://  \href{https://twitter.com/debarghya_das}{\bf @debarghya\_das} \\
-Quora://  \href{https://www.quora.com/Debarghya-Das}{\bf Debarghya-Das}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     COURSEWORK
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Coursework}
-\subsection{Graduate}
-Advanced Machine Learning \\
-Open Source Software Engineering \\
-Advanced Interactive Graphics \\
-Compilers + Practicum \\
-Cloud Computing \\
-Evolutionary Computation \\
-Defending Computer Networks \\
-Machine Learning \\
+\runsubsection{IMAS Marine Predator Lab}
+\descript{|\hspace{.25cm}Honours Student}
+\location{Feb 2014 – Nov 2014 | TAS, Australia}
+Supervisors: \textbf{\href{https://www.utas.edu.au/profiles/staff/imas-qms-utas/mark-hindell}{Mark Hindell}},  \textbf{\href{https://www.utas.edu.au/profiles/staff/imas/clive-mcmahon}{Jayson Semmens}},  \textbf{\href{https://www.deakin.edu.au/about-deakin/people/john-arnould}{John Arnould}} \\
+%\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item Desktop analysis of simultaneous accelerometry, TDR, video, and GPS data collected from adult female Australian sea lions
+\item Applied supervised machine learning techniques in R and IgorPro to validate prey encounter events and subsequently use that to test common predictions of optimal foraging theory - see Publication \#4
+\end{tightemize}
 \sectionsep
 
-\subsection{Undergraduate}
-Information Retrieval \\
-Operating Systems \\
-Artificial Intelligence + Practicum \\
-Functional Programming \\
-Computer Graphics + Practicum \\
-{\footnotesize \textit{\textbf{(Research Asst. \& Teaching Asst 2x) }}} \\
-Unix Tools and Scripting \\
+%\runsubsection{Cornell Phonetics Lab}
+%\descript{| Head Undergraduate Researcher}
+%\location{Mar 2012 – May 2013 | Ithaca, NY}
+%Led the development of \textbf{QuickTongue}, the first ever breakthrough tongue-controlled game with %\textbf{\href{http://conf.ling.cornell.edu/~tilsen/}{Prof Sam Tilsen}} to aid in Linguistics research. 
+%\sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     SKILLS
+%     Experience
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experience}
+
+\runsubsection{Self-Employed}
+\descript{|\hspace{.25cm}Social Media Manager}
+\location{Jun 2020 – Present | TAS, Australia}
+%\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item Create content, manage social media accounts, and run Facebook and Instagram ads for Singaporean chiropractic biz remotely. Additional tasks include: 
+\vspace{\topsep} % Hacky fix for awkward extra vertical space
+
+    \begin{tightemize}
+    \item installed Google Analytics and Tag Manager, and Facebook Pixel
+    \item updating and maintaining biz website 
+    \end{tightemize}
+\end{tightemize}
+\sectionsep
+
+\runsubsection{Self-Employed}
+\descript{|\hspace{.25cm}Videographer}
+\location{Nov 2019 – Present | TAS, Australia}
+%\vspace{\topsep} % Hacky fix for awkward extra vertical space
+\begin{tightemize}
+\item 5x 1 min awareness videos for Facebook for local Tasmanian Judo Club
+\item Client testimonial video for Possability Tasmania (child social service)
+\end{tightemize}
+\sectionsep
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     EXPERIENCE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Skills}
-\subsection{Programming}
-\location{Over 5000 lines:}
-Java \textbullet{}   Shell \textbullet{} Python \textbullet{} Javascript \\
-OCaml \textbullet{} Matlab \textbullet{} Rails \textbullet{} \LaTeX\ \\ 
-\location{Over 1000 lines:}
-C \textbullet{} C++ \textbullet{} CSS \textbullet{} PHP \textbullet{} Assembly \\
-\location{Familiar:}
-AS3 \textbullet{} iOS \textbullet{} Android \textbullet{} MySQL
+%\section{Experience}
+%\runsubsection{Facebook}
+%\descript{| Software Engineer }
+%\location{Jan 2015 - Present | New York, NY}
+%\sectionsep
+
+%\runsubsection{Coursera}
+%\descript{| KPCB Fellow + Software Engineering Intern }
+%\location{June 2014 – Sep 2014 | Mountain View, CA}
+%\vspace{\topsep} % Hacky fix for awkward extra vertical space
+%\begin{tightemize}
+%\item 52 out of 2500 applicants chosen to be a KPCB Fellow 2014.
+%\item Led and shipped Yoda - the admin interface for the new Phoenix platform. 
+%\item Full-stack developer - Wrote and reviewed code for JS using Backbone, Jade, Stylus and Require and %Scala using Play
+%\end{tightemize}
+%\sectionsep
+%
+%\runsubsection{Google}
+%\descript{| Software Engineering Intern }
+%\location{May 2013 – Aug 2013 | Mountain View, CA}
+%\begin{tightemize}
+%\item Worked on the YouTube Captions team, in Javascript and Python to plan, to design and develop the %full stack to add and edit Automatic Speech Recognition captions. In production.
+%\item Created a backbone.js-like framework for the Captions editor.
+%\end{tightemize}
+%\sectionsep
+%
+%\runsubsection{Phabricator}
+%\descript{| Open Source Contributor \& Team Leader}
+%\location{Jan 2013 – May 2013 | Palo Alto, CA \& Ithaca, NY}
+%\begin{tightemize}
+%\item Phabricator is used daily by Facebook, Dropbox, Quora, Asana and more.
+%\item I created the Meme generator and more in PHP and Shell.
+%\item Led a team from MIT, Cornell, IC London and UHelsinki for the project.
+%\end{tightemize}
+%\sectionsep
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     PUBLICATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Publications} 
+\renewcommand\refname{\vskip -1.5em} % Couldn't get this working from the .cls file
+\bibliographystyle{abbrv}
+\bibliography{publications}
+For more, please visit my ResearchGate profile
+\nocite{*}
 \sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,85 +264,135 @@ AS3 \textbullet{} iOS \textbullet{} Android \textbullet{} MySQL
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\end{minipage} 
+%% Switch to the right column. This will now automatically move to the second
+%% page if the content is too long.
+\switchcolumn
 \hfill
-\begin{minipage}[t]{0.66\textwidth} 
+%\begin{minipage}[t]{0.66\textwidth} % remove 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     EXPERIENCE
+%     EDUCATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Experience}
-\runsubsection{Facebook}
-\descript{| Software Engineer }
-\location{Jan 2015 - Present | New York, NY}
+\section{Education} 
+
+\subsection{University of Tasmania}
+\descript{Ph.D in Biological Sciences}
+Institute for Marine and Antarctic Studies
+\location{Aug 2020 | TAS, Australia}
 \sectionsep
 
-\runsubsection{Coursera}
-\descript{| KPCB Fellow + Software Engineering Intern }
-\location{June 2014 – Sep 2014 | Mountain View, CA}
-\vspace{\topsep} % Hacky fix for awkward extra vertical space
-\begin{tightemize}\item 52 out of 2500 applicants chosen to be a KPCB Fellow 2014.
-\item Led and shipped Yoda - the admin interface for the new Phoenix platform. 
-\item Full-stack developer - Wrote and reviewed code for JS using Backbone, Jade, Stylus and Require and Scala using Play
-\end{tightemize}
+\subsection{University of Tasmania}
+\descript{Bachelor in Marine Science with 1st Class Honours}
+Institute for Marine and Antarctic Studies 
+\location{Nov 2014 | TAS, Australia}
 \sectionsep
-
-\runsubsection{Google}
-\descript{| Software Engineering Intern }
-\location{May 2013 – Aug 2013 | Mountain View, CA}
-\begin{tightemize}
-\item Worked on the YouTube Captions team, in Javascript and Python to plan, to design and develop the full stack to add and edit Automatic Speech Recognition captions. In production.\item Created a backbone.js-like framework for the Captions editor.\end{tightemize}
-\sectionsep
-
-\runsubsection{Phabricator}
-\descript{| Open Source Contributor \& Team Leader}
-\location{Jan 2013 – May 2013 | Palo Alto, CA \& Ithaca, NY}
-\begin{tightemize}
-\item Phabricator is used daily by Facebook, Dropbox, Quora, Asana and more.\item I created the Meme generator and more in PHP and Shell.\item Led a team from MIT, Cornell, IC London and UHelsinki for the project.\end{tightemize}
-\sectionsep
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     RESEARCH
+%     LINKS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Research}
-\runsubsection{Cornell Robot Learning Lab}
-\descript{| Researcher}
-\location{Jan 2014 – Jan 2015 | Ithaca, NY}
-Worked with \textbf{\href{http://www.cs.cornell.edu/~ashesh/}{Ashesh Jain}} and \textbf{\href{http://www.cs.cornell.edu/~asaxena/}{Prof Ashutosh Saxena}} to create \textbf{PlanIt}, a tool which  learns from large scale user preference feedback to plan robot trajectories in human environments.  
+\section{Links} 
+ResearchGate:// \href{https://www.researchgate.net/profile/Dahlia_Foo}{\bf Dahlia\_Foo} \\
+Github:// \href{https://github.com/oofd}{\bf oofd} \\
+LinkedIn://  \href{https://www.linkedin.com/in/dahliafoo}{\bf dahliafoo} \\
+YouTube://  \href{https://www.youtube.com/c/DahliaFoo/}{\bf DahliaFoo} \\
+Twitter://  \href{https://twitter.com/dahliafoo}{\bf @dahliafoo} \\
+Instagram://  \href{https://www.instagram.com/dahliafooo}{\bf @dahliafooo}
+\sectionsep
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     SKILLS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Skills}
+\subsection{Programming}
+\location{Proficient with: R}
+\location{Familiar with: CSS \textbullet{} \LaTeX \textbullet{} IgorPro}
 \sectionsep
 
-\runsubsection{Cornell Phonetics Lab}
-\descript{| Head Undergraduate Researcher}
-\location{Mar 2012 – May 2013 | Ithaca, NY}
-Led the development of \textbf{QuickTongue}, the first ever breakthrough tongue-controlled game with \textbf{\href{http://conf.ling.cornell.edu/~tilsen/}{Prof Sam Tilsen}} to aid in Linguistics research. 
+\subsection{Data Analysis in R}
+\location{Proficient with:}
+Data wrangling \textbullet{} (Generalised) Linear mixed models \textbullet{} Graphics \textbullet{} GIS \textbullet{} GLS, TDR, Remote sensing data \textbullet{} Animal home ranges \\
+\location{Familiar with:}
+Generalised additive (mixed) models \textbullet{} Machine learning \textbullet{} Time series analyses 
+\sectionsep
+
+\subsection{Technical Skills}
+\location{Proficient with:}
+Remote living and fieldwork \textbullet{} Grant writing \textbullet{} Report writing/scientific publishing \textbullet{} Pinniped capturing (with dart gun or net), anaesthesia, tagging \textbullet{} 4WD (> 50h) \textbullet{} Camera trapping  
+\sectionsep
+
+\subsection{Content/Marketing Skills}
+\location{Proficient with:}
+Building websites on Wordpress \& Squarespace \textbullet{} Photography \textbullet{} Filmmaking and video editing \textbullet{} Adobe Photoshop, Lightroom, Premier Pro \textbullet{} Final Cut Pro \textbullet{} Project logistics planning \textbullet{} Facebook \& Instagram advertising \textbullet{} Copy writing \\
+\hfill
+\subsection{Soft Skills}
+\location{Strong:}
+Team player \textbullet{} Initiative \textbullet{} Independent \textbullet{} Communication \textbullet{} Resourcefulness \textbullet{} Self-learning \textbullet{} Grit \textbullet{} Meticulous \textbullet{} Self-awareness \textbullet{} English  \\
+\location{Fair:}
+Mandarin
+\sectionsep
+
+
+\subsection{Qualifications}
+Basic First Aid (Exp: Nov 2020) \textbullet{} Manual Drivers Licence \textbullet{} Remote Pilot Licence (Australian, issued 2019) \textbullet{} 4WD and Defensive Driving Course (completed Jan 2018) \textbullet{} Firearms licence (issued by South Australia, Exp: 2018) \textbullet{} Advanced Open Water diver (Thailand; SSI)
 \sectionsep
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     AWARDS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Awards} 
-\begin{tabular}{rll}
-2014	     & top 52/2500  & KPCB Engineering Fellow\\
-2014	     & 1\textsuperscript{st}/50  & Microsoft Coding Competition, Cornell\\
-2013	     & National  & Jump Trading Challenge Finalist\\
-2013     & 7\textsuperscript{th}/120 & CS 3410 Cache Race Bot Tournament  \\
-2012     & 2\textsuperscript{nd}/150 & CS 3110 Biannual Intra-Class Bot Tournament \\
-2011     & National & Indian National Mathematics Olympiad (INMO) Finalist \\
-\end{tabular}
+\section{Awards \& Scholarships} 
+\subsection{Academic}
+\begin{tabularx}{80mm}{p{.05\textwidth}X}
+2015-18	     & International Postgrad Research Scholarship \\
+2015-18	     & Tasmanian Graduate Research Scholarship \\
+2014	     & Marine \& Antarctic Studies Honours Scholarship \\
+2013     & Vice Chancellor Leadership Award \\
+2012     &  Dean's Summer Research Scholarship \\
+\end{tabularx}
 \sectionsep
 
+\subsection{Photography}
+\begin{tabularx}{80mm}{p{.05\textwidth}X}
+Jul 2020 & Featured in Spring issue of Wild Planet Photo Magazine (online) \\
+Nov 2019 & Ecological Society Australia 2019 Photo Compeition - Ecology in Action category winner  \\
+
+\end{tabularx}
+\sectionsep
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     PUBLICATIONS
+%   Volunteer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Publications} 
-\renewcommand\refname{\vskip -1.5cm} % Couldn't get this working from the .cls file
-\bibliographystyle{abbrv}
-\bibliography{publications}
-\nocite{*}
+\section{Volunteer} 
+\subsection{Research}
+\begin{tabularx}{80mm}{p{.05\textwidth}X}
+2015, 2016	     & Long-nosed fur seal annual pup census on Kangaroo Island (South Australian Research and Development Institute) \\
+2014	     & Australian fur seal research fieldwork on Kanowna Island (Deakin Uni.) \\
+2013 & Zooplankton research fieldwork (ocean sampling; UTas) \\
+2012 & Quoll research fieldwork (camera traps; UTas) \\
+2012 & Marsupial research fieldwork (photogammetry; UTas) \\
+\end{tabularx}
+\sectionsep
 
-\end{minipage} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Fun Facts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Fun Facts}
+\subsection{Interests}
+Meditation \textbullet{} Cryptocurrency \& Blockchain \textbullet{} Entrepreneurship \textbullet{} Investing \textbullet{} Technology \textbullet{} Bio-logging \textbullet{} Bio-hacking \textbullet{} DIY \textbullet{} Plant-based lifestyle \textbullet{} Mixed Martial Arts \textbullet{} Wildlife Filmmaking  \\
+\sectionsep
+\subsection{Hobbies}
+Brazilian Jiu Jitsu \textbullet{} Boxing \textbullet{} Wildlife and Landscape Photography \textbullet{} Filming and video editing \textbullet{} Podcasts
+\sectionsep
+
+\sectionsep
+
+\end{paracol}
+%\end{minipage} 
+
+
 \end{document}  \documentclass[]{article}

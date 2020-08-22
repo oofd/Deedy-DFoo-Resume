@@ -18,8 +18,8 @@ This template attempts to **look clean**, highlight **details**, be a **single (
 ## Preview
 
 ### OpenFonts
-![alt tag](https://user-images.githubusercontent.com/18390092/90956906-f2bb2100-e4cd-11ea-976b-0cd32ad1cee3.jpg)
-![alt tag](https://user-images.githubusercontent.com/18390092/90956905-f058c700-e4cd-11ea-89d0-eef20fe7417e.jpg)
+![alt tag](https://user-images.githubusercontent.com/18390092/90956906-f2bb2100-e4cd-11ea-976b-0cd32ad1cee3.jpg =700x876)
+![alt tag](https://user-images.githubusercontent.com/18390092/90956905-f058c700-e4cd-11ea-89d0-eef20fe7417e.jpg =700x876)
 
 ### MacFonts
 ![alt tag](https://raw.githubusercontent.com/deedydas/Deedy-Resume/master/MacFonts/sample-image.png)

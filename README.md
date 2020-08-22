@@ -1,4 +1,4 @@
-Deedy-Resume
+Deedy x DFOO - Resume
 =========================
 
 A **one-page**, **two asymmetric column** resume template in **XeTeX** that caters particularly to an **undergraduate Computer Science** student.
@@ -13,7 +13,7 @@ It is licensed under the Apache License 2.0.
 
 Common LaTeX resume-builders such as [**moderncv**](http://www.latextemplates.com/template/moderncv-cv-and-cover-letter)  and the [**friggeri-cv**](https://github.com/afriggeri/cv) look great if you're looking for a multi-page resume with numerous citations, but usually imperfect for making a thorough, single-page one. A lot of companies today search resumes based on [keywords](http://www.businessinsider.com/most-big-companies-have-a-tracking-system-that-scans-your-resume-for-keywords-2012-1) but at the same time require/prefer a one-page resume, especially for undergraduates. 
 
-This template attempts to **look clean**, highlight **details**, be a **single page**, and allow useful **LaTeX templating**.
+This template attempts to **look clean**, highlight **details**, be a **single (or more) page**, and allow useful **LaTeX templating**.
 
 ## Preview
 
@@ -36,6 +36,14 @@ This template attempts to **look clean**, highlight **details**, be a **single p
 4. **ShareLatex**.com (v1 fonts changes) - [compilable online](https://www.sharelatex.com/templates/cv-or-resume/deedy-resume)
 
 ## Changelog
+
+### v.1.3 only OpenFont version (DFoo):
+ 0. Forked from original Deedy CV
+ 1. Fixed overflow issue from previous version by using paracol package (idea from CVs made by LianTze Lim in overleaf)
+ 2. Adjusted column widths to suit my preference
+ 3. Used tabularx package which makes it easier to set relative widths for tables
+ 4. Copied formatting .cls file from "Deedy Resume Reversed" by Zachary Taylor in overleaf
+ 
 ### v1.2
  1. Added publications in place of societies.
  2. Collapsed a portion of education.
@@ -57,9 +65,8 @@ This template attempts to **look clean**, highlight **details**, be a **single p
 6. Add various styling and section options and allow for multiple pages smoothly.
 
 ## Known Issues:
-1. Overflows onto second page if any column's contents are more than the vertical limit
-2. Hacky space on the first bullet point on the second column.
-3. Hacky redefinition of \refname to omit 'References' text for publications in the MacFonts version.
+1. Hacky space on the first bullet point on the second column.
+2. Hacky redefinition of \refname to omit 'References' text for publications in the MacFonts version.
 
 ## License
     Copyright 2014 Debarghya Das
